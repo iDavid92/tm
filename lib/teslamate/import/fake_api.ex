@@ -59,11 +59,6 @@ defmodule TeslaMate.Import.FakeApi do
         processing_complete(state)
         {:noreply, state}
 
-      {:event, %Vehicle{} = vehicle, state}
-      when vehicle.drive_state.timestamp >= state.date_limit ->
-        processing_complete(state)
-        {:noreply, state}
-
       {:event, %Vehicle{} = vehicle, state} ->
         {:reply, {:ok, vehicle}, state}
     end
